@@ -16,7 +16,7 @@ router.post("/", async (req,res)=>{
 //UPDATE
 router.put("/:id", async (req,res)=>{
     try{
-        const updatedHotel = await Hotel.findByIdAndUpdate(req.params.id,{$set: req.body})
+        const updatedHotel = await Hotel.findByIdAndUpdate(req.params.id,{$set: req.body},{new:true})
         res.send("hotel updated") 
     } catch (error){
         res.status(500).json(error)
