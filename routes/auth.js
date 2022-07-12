@@ -8,7 +8,7 @@ const router = express.Router()
 router.post("/", async (req, res, next)=>{
     try{
         const salt = bcrypt.genSaltSync(saltRounds);
-        const hash = bcrypt.hashSync(myPlaintextPassword, salt);
+        const hash = bcrypt.hashSync(req.body.password, salt);
 
         const newUser = new User({
             username:req.body.username,
