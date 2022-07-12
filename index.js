@@ -30,6 +30,12 @@ app.use("/hotel", hotelRoute);
 app.use("/users", usersRoute);
 app.use("/rooms", roomsRoute);
 
+app.use((err,req,res,next)=>{
+    const errorStatus = err.status || 500
+    const errorMessage = err.message || "sth is wrong"
+    return res.status(errorStatus).json()
+})
+
 app.listen(3504,()=>{
     connect()
     console.log("connected to backend")
