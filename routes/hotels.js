@@ -9,11 +9,20 @@ router.post("/", async (req,res)=>{
         const savedHotel = await newHotel.save()
        res.send("hotel") 
     } catch (error){
-        res.status(500).json(err)
+        res.status(500).json(error)
     }
     
 })
 //UPDATE
+router.put("/:id", async (req,res)=>{
+    try{
+        const updatedHotel = await Hotel.findByIdAndUpdate(req.params.id,{$set: req.body})
+        res.send("hotel updated") 
+    } catch (error){
+        res.status(500).json(error)
+    }
+    
+})
 //DELETE
 //GET
 //GET ALL
